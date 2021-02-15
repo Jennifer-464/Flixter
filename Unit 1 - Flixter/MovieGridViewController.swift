@@ -8,7 +8,7 @@
 import UIKit
 import AlamofireImage
 
-class MovieGridViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
+class MovieGridViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var movies = [[String:Any]]()
@@ -69,14 +69,27 @@ class MovieGridViewController: UIViewController,UICollectionViewDataSource, UICo
         return cell
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        print("Loading up details screen")
+        
+        // Find selected movie
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)!
+        let movie = movies[indexPath.item]
+        
+        // Pass selected movie details to Grid View Controller
+        let detailViewcontroller = segue.destination as! GridDetailsViewController
+        detailViewcontroller.movie = movie
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
-    */
+    
 
 }
