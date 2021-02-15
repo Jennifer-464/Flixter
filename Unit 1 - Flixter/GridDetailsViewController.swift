@@ -14,6 +14,7 @@ class GridDetailsViewController: UIViewController {
     @IBOutlet weak var posterView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     var movie: [String:Any]!
     
     override func viewDidLoad() {
@@ -22,9 +23,11 @@ class GridDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
         titleLabel.text = movie["title"] as? String
         synopsisLabel.text = movie["overview"] as? String
+        dateLabel.text = movie["release_date"] as? String
         
         titleLabel.sizeToFit()
         synopsisLabel.sizeToFit()
+        dateLabel.sizeToFit()
         
         // Thumbnail IMAGES
         let baseUrl = "https://image.tmdb.org/t/p/w185"
